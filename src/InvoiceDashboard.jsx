@@ -197,7 +197,7 @@ const InvoiceDashboard = () => {
                   </div>
                 </div>
                 <h2 className="text-lg font-semibold mb-2 bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent">Create New Invoice</h2>
-                <p className="text-sm text-gray-500 mb-1">Start by creating and sending new invoice</p>
+                <p className="text-sm text-gray-400 mb-1">Start by creating and sending new invoice</p>
               </div>
             </div>
             
@@ -208,38 +208,58 @@ const InvoiceDashboard = () => {
             <div className="bg-white rounded-2xl p-6 shadow-sm">
               {/* Flex container for the title and date range */}
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-sm font-medium text-gray-600">Time Period</h3>
+                <h3 className="text-sm font-medium text-gray-400">Time Period</h3>
                 <p className="text-xs text-gray-400">dd:mm:yyyy - dd:mm:yyyy</p>
               </div>
 
               <div className="flex flex-wrap gap-2 mb-4">
                 <button
                   onClick={() => setSelectedPeriod('1Month')}
-                  className={`px-4 py-2 rounded-full text-sm border transition-colors ${selectedPeriod === '1Month' ? 'bg-purple-600 text-white border-purple-600' : 'bg-white text-gray-600 border-gray-300'}`}
+                  className={`px-4 py-2 rounded-full text-sm border transition-colors ${selectedPeriod === '1Month' ? 'bg-purple-600 text-white border-purple-600' : 'bg-white text-gray-400 border-gray-200'}`}
                 >
                   1 Month
                 </button>
                 <button
                   onClick={() => setSelectedPeriod('3Months')}
-                  className={`px-4 py-2 rounded-full text-sm border transition-colors ${selectedPeriod === '3Months' ? 'bg-purple-600 text-white border-purple-600' : 'bg-white text-gray-600 border-gray-300'}`}
+                  className={`px-4 py-2 rounded-full text-sm border transition-colors ${selectedPeriod === '3Months' ? 'bg-purple-600 text-white border-purple-600' : 'bg-white text-gray-400 border-gray-200'}`}
                 >
                   3 Months
                 </button>
                 <button
                   onClick={() => setSelectedPeriod('1Year')}
-                  className={`px-4 py-2 rounded-full text-sm flex items-center border transition-colors ${selectedPeriod === '1Year' ? 'bg-purple-600 text-white border-purple-600' : 'bg-white text-gray-600 border-gray-300'}`}
+                  className={`px-4 py-2 rounded-full text-sm flex items-center border transition-colors ${selectedPeriod === '1Year' ? 'bg-purple-600 text-white border-purple-600' : 'bg-white text-gray-400 border-gray-200'}`}
                 >
                   1 Year <Crown className="w-3 h-3 ml-1 text-yellow-500" />
                 </button>
               </div>
               <button 
                 onClick={() => setSelectedPeriod('Custom')}
-                className={`px-4 py-2 rounded-full text-sm flex items-center border transition-colors ${selectedPeriod === 'Custom' ? 'bg-purple-600 text-white border-purple-600' : 'bg-white text-gray-600 border-gray-300'}`}
+                className={`px-4 py-2 rounded-full text-sm flex items-center border transition-colors ${selectedPeriod === 'Custom' ? 'bg-purple-600 text-white border-purple-600' : 'bg-white text-gray-400 border-gray-300'}`}
               >
                 {/* Replaced emoji with image icon */}
                 <img src={CalendarIcon} alt="Calendar Icon" className={`w-4 h-4 mr-2 ${selectedPeriod === 'Custom' ? 'filter invert' : ''}`} />
                 Custom
               </button>
+            </div>
+
+            {/* Total Earnings */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm">
+              <h3 className="text-sm font-medium text-gray-600 mb-2">Total Earnings</h3>
+              <p className="text-3xl font-semibold text-[#8134AF]">$1,25,000</p>
+            </div>
+
+            {/* Payment Status - Side by side for all screen sizes */}
+            <div className="grid grid-cols-2 gap-4">
+              {/* Payment Awaited */}
+              <div className="bg-white rounded-2xl p-6 shadow-sm">
+                <h4 className="text-sm font-medium text-gray-600 mb-1">Payment Awaited</h4>
+                <p className="text-xl font-semibold text-[#8134AF]">$25,000</p>
+              </div>
+              {/* Payment Overdue */}
+              <div className="bg-white rounded-2xl p-6 shadow-sm">
+                <h4 className="text-sm font-medium text-gray-600 mb-1">Payment Overdue</h4>
+                <p className="text-xl font-semibold text-[#8134AF]">$25,000</p>
+              </div>
             </div>
 
             {/* Income Trend Chart */}
@@ -265,28 +285,7 @@ const InvoiceDashboard = () => {
             </div>
           </div>
 
-          {/* Right Column - Stats */}
-          <div className="space-y-6">
-            {/* Total Earnings */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
-              <h3 className="text-sm font-medium text-gray-600 mb-2">Total Earnings</h3>
-              <p className="text-3xl font-semibold text-gray-900">$1,25,000</p>
-            </div>
-
-            {/* Payment Status */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <h4 className="text-sm font-medium text-gray-600 mb-1">Payment Awaited</h4>
-                  <p className="text-xl font-semibold text-gray-900">$25,000</p>
-                </div>
-                <div>
-                  <h4 className="text-sm font-medium text-gray-600 mb-1">Payment Overdue</h4>
-                  <p className="text-xl font-semibold text-gray-900">$25,000</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* Right Column - Removed as per request */}
         </div>
 
         {/* Invoices List */}
