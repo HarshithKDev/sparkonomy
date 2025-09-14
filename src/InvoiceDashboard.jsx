@@ -191,12 +191,12 @@ const InvoiceDashboard = () => {
               <div className="text-center">
                 {/* Gradient Border for Plus Icon */}
                 <div className="w-12 h-12 p-[2px] rounded-full flex items-center justify-center mx-auto mb-4 bg-gradient-to-br from-[#DD2A7B] via-[#9747FF] to-[#334CCA]">
-                  <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
+                  <div className="w-full h-full bg-gray-200 rounded-full flex items-center justify-center">
                     <Plus className="w-6 h-6 text-purple-600" />
                   </div>
                 </div>
                 <h2 className="text-lg font-semibold mb-2 bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent">Create New Invoice</h2>
-                <p className="text-sm text-gray-500 mb-1">Start by creating and sending new invoice</p>
+                <p className="text-sm text-gray-400 mb-1">Start by creating and sending new invoice</p>
               </div>
             </div>
             
@@ -205,7 +205,7 @@ const InvoiceDashboard = () => {
 
             {/* Time Period Selection */}
             <div className="bg-white rounded-2xl p-6 shadow-sm">
-              <h3 className="text-sm font-medium text-gray-600 mb-4">Time Period</h3>
+              <h3 className="text-sm font-medium text-gray-400 mb-4">Time Period</h3>
               <div className="flex flex-wrap gap-2 mb-4">
                 <button
                   onClick={() => setSelectedPeriod('1Month')}
@@ -260,7 +260,7 @@ const InvoiceDashboard = () => {
             {/* Total Earnings */}
             <div className="bg-white rounded-2xl p-6 shadow-sm">
               <h3 className="text-sm font-medium text-gray-600 mb-2">Total Earnings</h3>
-              <p className="text-3xl font-bold text-gray-900">$1,25,000</p>
+              <p className="text-3xl font-semibold text-[#8134AF]">$1,25,000</p>
             </div>
 
             {/* Payment Status */}
@@ -268,11 +268,11 @@ const InvoiceDashboard = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <h4 className="text-sm font-medium text-gray-600 mb-1">Payment Awaited</h4>
-                  <p className="text-xl font-semibold text-gray-900">$25,000</p>
+                  <p className="text-xl font-semibold text-[#8134AF]">$25,000</p>
                 </div>
                 <div>
                   <h4 className="text-sm font-medium text-gray-600 mb-1">Payment Overdue</h4>
-                  <p className="text-xl font-semibold text-gray-900">$25,000</p>
+                  <p className="text-xl font-semibold text-[#8134AF]">$25,000</p>
                 </div>
               </div>
             </div>
