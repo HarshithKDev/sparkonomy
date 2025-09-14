@@ -159,8 +159,8 @@ const InvoiceDashboard = () => {
       {/* Mobile Header */}
       <div className="lg:hidden px-4 py-3 flex items-center justify-between border-b" style={{ backgroundColor: '#e7cde6' }}>
         <div className="flex items-center">
-          <ChevronLeft className="w-5 h-5 text-gray-600" />
-          <span className="ml-2 text-gray-600 text-sm">Back</span>
+          <ChevronLeft className="w-5 h-5 text-black" />
+          <span className="ml-2 text-black text-sm">Back</span>
         </div>
         <h1 className="font-semibold text-gray-900">Dashboard</h1>
         <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center overflow-hidden">
@@ -187,7 +187,7 @@ const InvoiceDashboard = () => {
           {/* Left Column - Main Content */}
           <div className="lg:col-span-2 space-y-6">
             {/* Create New Invoice Card */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
+            <div className="bg-gray-200 rounded-2xl p-6 shadow-sm">
               <div className="text-center">
                 {/* Gradient Border for Plus Icon */}
                 <div className="w-12 h-12 p-[2px] rounded-full flex items-center justify-center mx-auto mb-4 bg-gradient-to-br from-[#DD2A7B] via-[#9747FF] to-[#334CCA]">
@@ -201,7 +201,7 @@ const InvoiceDashboard = () => {
             </div>
             
             {/* Moved text */}
-            <p className="text-center text-xs text-gray-400">Or upload an existing invoice and set payment reminder</p>
+            <p className="text-center text-xs text-[#8134AF]">Or upload an existing invoice and set payment reminder</p>
 
             {/* Time Period Selection */}
             <div className="bg-white rounded-2xl p-6 shadow-sm">
