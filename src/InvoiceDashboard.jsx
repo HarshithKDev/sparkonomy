@@ -3,6 +3,7 @@ import { ChevronLeft, Plus, ChevronDown, Edit, Bell, Crown } from 'lucide-react'
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ReactLogo from './assets/profile.png';
+import CalendarIcon from './assets/calender.png';
 
 ChartJS.register(
   CategoryScale,
@@ -93,14 +94,14 @@ const InvoiceDashboard = () => {
     scales: {
       y1: {
         type: 'linear',
-        display: true, // Display y1 axis
+        display: true,
         position: 'left',
         grid: {
           display: false,
         },
         min: 0,
         max: 8,
-        ticks: { // Add the ticks configuration
+        ticks: {
           callback: value => `${value}k`,
           stepSize: 2,
           color: '#9CA3AF',
@@ -159,8 +160,8 @@ const InvoiceDashboard = () => {
       {/* Mobile Header */}
       <div className="lg:hidden px-4 py-3 flex items-center justify-between border-b" style={{ backgroundColor: '#e7cde6' }}>
         <div className="flex items-center">
-          <ChevronLeft className="w-5 h-5 text-black" />
-          <span className="ml-2 text-black text-sm">Back</span>
+          <ChevronLeft className="w-5 h-5 text-gray-600" />
+          <span className="ml-2 text-gray-600 text-sm">Back</span>
         </div>
         <h1 className="font-semibold text-gray-900">Dashboard</h1>
         <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center overflow-hidden">
@@ -190,13 +191,13 @@ const InvoiceDashboard = () => {
             <div className="bg-gray-200 rounded-2xl p-6 shadow-sm">
               <div className="text-center">
                 {/* Gradient Border for Plus Icon */}
-                <div className="w-12 h-12 p-[2px] rounded-full flex items-center justify-center mx-auto mb-4 bg-gradient-to-br from-[#DD2A7B] via-[#9747FF] to-[#334CCA]">
+                <div className="w-12 h-12 p-[3px] rounded-full flex items-center justify-center mx-auto mb-4 bg-gradient-to-br from-[#DD2A7B] via-[#9747FF] to-[#334CCA]">
                   <div className="w-full h-full bg-gray-200 rounded-full flex items-center justify-center">
-                    <Plus className="w-6 h-6 text-purple-600" />
+                    <Plus className="w-6 h-6 text-purple-600" strokeWidth={3} />
                   </div>
                 </div>
                 <h2 className="text-lg font-semibold mb-2 bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent">Create New Invoice</h2>
-                <p className="text-sm text-gray-400 mb-1">Start by creating and sending new invoice</p>
+                <p className="text-sm text-gray-500 mb-1">Start by creating and sending new invoice</p>
               </div>
             </div>
             
@@ -205,7 +206,12 @@ const InvoiceDashboard = () => {
 
             {/* Time Period Selection */}
             <div className="bg-white rounded-2xl p-6 shadow-sm">
-              <h3 className="text-sm font-medium text-gray-400 mb-4">Time Period</h3>
+              {/* Flex container for the title and date range */}
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-sm font-medium text-gray-600">Time Period</h3>
+                <p className="text-xs text-gray-400">dd:mm:yyyy - dd:mm:yyyy</p>
+              </div>
+
               <div className="flex flex-wrap gap-2 mb-4">
                 <button
                   onClick={() => setSelectedPeriod('1Month')}
@@ -226,8 +232,12 @@ const InvoiceDashboard = () => {
                   1 Year <Crown className="w-3 h-3 ml-1 text-yellow-500" />
                 </button>
               </div>
-              <button className="flex items-center text-sm text-gray-600">
-                <span className="mr-2">📅</span>
+              <button 
+                onClick={() => setSelectedPeriod('Custom')}
+                className={`px-4 py-2 rounded-full text-sm flex items-center border transition-colors ${selectedPeriod === 'Custom' ? 'bg-purple-600 text-white border-purple-600' : 'bg-white text-gray-600 border-gray-300'}`}
+              >
+                {/* Replaced emoji with image icon */}
+                <img src={CalendarIcon} alt="Calendar Icon" className={`w-4 h-4 mr-2 ${selectedPeriod === 'Custom' ? 'filter invert' : ''}`} />
                 Custom
               </button>
             </div>
@@ -260,7 +270,7 @@ const InvoiceDashboard = () => {
             {/* Total Earnings */}
             <div className="bg-white rounded-2xl p-6 shadow-sm">
               <h3 className="text-sm font-medium text-gray-600 mb-2">Total Earnings</h3>
-              <p className="text-3xl font-semibold text-[#8134AF]">$1,25,000</p>
+              <p className="text-3xl font-semibold text-gray-900">$1,25,000</p>
             </div>
 
             {/* Payment Status */}
@@ -268,11 +278,11 @@ const InvoiceDashboard = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <h4 className="text-sm font-medium text-gray-600 mb-1">Payment Awaited</h4>
-                  <p className="text-xl font-semibold text-[#8134AF]">$25,000</p>
+                  <p className="text-xl font-semibold text-gray-900">$25,000</p>
                 </div>
                 <div>
                   <h4 className="text-sm font-medium text-gray-600 mb-1">Payment Overdue</h4>
-                  <p className="text-xl font-semibold text-[#8134AF]">$25,000</p>
+                  <p className="text-xl font-semibold text-gray-900">$25,000</p>
                 </div>
               </div>
             </div>
