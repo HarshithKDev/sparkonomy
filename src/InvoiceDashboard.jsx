@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ChevronLeft, Plus, ChevronDown, Edit, Bell, Crown } from 'lucide-react';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import ReactLogo from './assets/profile.png';
 
 ChartJS.register(
   CategoryScale,
@@ -92,13 +93,18 @@ const InvoiceDashboard = () => {
     scales: {
       y1: {
         type: 'linear',
-        display: false,
+        display: true, // Display y1 axis
         position: 'left',
         grid: {
           display: false,
         },
         min: 0,
         max: 8,
+        ticks: { // Add the ticks configuration
+          callback: value => `${value}k`,
+          stepSize: 2,
+          color: '#9CA3AF',
+        },
       },
       y2: {
         type: 'linear',
@@ -153,12 +159,12 @@ const InvoiceDashboard = () => {
       {/* Mobile Header */}
       <div className="lg:hidden px-4 py-3 flex items-center justify-between border-b" style={{ backgroundColor: '#e7cde6' }}>
         <div className="flex items-center">
-          <ChevronLeft className="w-5 h-5 text-black" />
-          <span className="ml-2 text-black text-sm">Back</span>
+          <ChevronLeft className="w-5 h-5 text-gray-600" />
+          <span className="ml-2 text-gray-600 text-sm">Back</span>
         </div>
         <h1 className="font-semibold text-gray-900">Dashboard</h1>
-        <div className="w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center">
-          <span className="text-white text-sm font-medium">A</span>
+        <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center overflow-hidden">
+          <img src={ReactLogo} alt="Profile" className="w-full h-full object-cover" />
         </div>
       </div>
 
@@ -170,8 +176,8 @@ const InvoiceDashboard = () => {
             <span className="text-gray-600 mr-6">Back</span>
             <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
           </div>
-          <div className="w-10 h-10 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center">
-            <span className="text-white font-medium">A</span>
+          <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center overflow-hidden">
+            <img src={ReactLogo} alt="Profile" className="w-full h-full object-cover" />
           </div>
         </div>
       </div>
@@ -183,14 +189,19 @@ const InvoiceDashboard = () => {
             {/* Create New Invoice Card */}
             <div className="bg-white rounded-2xl p-6 shadow-sm">
               <div className="text-center">
-                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Plus className="w-6 h-6 text-purple-600" />
+                {/* Gradient Border for Plus Icon */}
+                <div className="w-12 h-12 p-[2px] rounded-full flex items-center justify-center mx-auto mb-4 bg-gradient-to-br from-[#DD2A7B] via-[#9747FF] to-[#334CCA]">
+                  <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
+                    <Plus className="w-6 h-6 text-purple-600" />
+                  </div>
                 </div>
-                <h2 className="text-lg font-semibold text-purple-600 mb-2">Create New Invoice</h2>
+                <h2 className="text-lg font-semibold mb-2 bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent">Create New Invoice</h2>
                 <p className="text-sm text-gray-500 mb-1">Start by creating and sending new invoice</p>
-                <p className="text-xs text-gray-400">Or upload an existing invoice and set payment reminder</p>
               </div>
             </div>
+            
+            {/* Moved text */}
+            <p className="text-center text-xs text-gray-400">Or upload an existing invoice and set payment reminder</p>
 
             {/* Time Period Selection */}
             <div className="bg-white rounded-2xl p-6 shadow-sm">
