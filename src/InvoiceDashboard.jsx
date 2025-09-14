@@ -151,10 +151,10 @@ const InvoiceDashboard = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Mobile Header */}
-      <div className="lg:hidden bg-white px-4 py-3 flex items-center justify-between border-b">
+      <div className="lg:hidden px-4 py-3 flex items-center justify-between border-b" style={{ backgroundColor: '#e7cde6' }}>
         <div className="flex items-center">
-          <ChevronLeft className="w-5 h-5 text-gray-600" />
-          <span className="ml-2 text-gray-600 text-sm">Back</span>
+          <ChevronLeft className="w-5 h-5 text-black" />
+          <span className="ml-2 text-black text-sm">Back</span>
         </div>
         <h1 className="font-semibold text-gray-900">Dashboard</h1>
         <div className="w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center">
@@ -163,7 +163,7 @@ const InvoiceDashboard = () => {
       </div>
 
       {/* Desktop Header */}
-      <div className="hidden lg:block bg-white px-8 py-4 border-b">
+      <div className="hidden lg:block px-8 py-4 border-b" style={{ backgroundColor: '#e7cde6' }}>
         <div className="mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="flex items-center">
             <ChevronLeft className="w-5 h-5 text-gray-600 mr-2" />
