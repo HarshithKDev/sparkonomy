@@ -1,12 +1,24 @@
 import React, { useState } from 'react';
-import { ChevronLeft, Plus, ChevronDown, Edit, Bell } from 'lucide-react'; // Removed Calendar from import
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import { ChevronLeft, Plus, ChevronDown, Edit, Bell } from 'lucide-react';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  LineController, // <-- Import LineController
+  BarController,    // <-- Import BarController
+} from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ReactLogo from './assets/profile.png';
 import LogoPaw from './assets/logo.png';
 import CrownImage from './assets/crown.png'; 
-import GradientCalendarImage from './assets/calender-2.png'; // Assuming you save the gradient calendar image in assets
-import GreyCalendarImage from './assets/calender-3.png'; // Assuming you save the grey calendar image in assets
+import GradientCalendarImage from './assets/calender-2.png';
+import GreyCalendarImage from './assets/calender-3.png';
 import './App.css';
 
 ChartJS.register(
@@ -17,7 +29,9 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  LineController, // <-- Register LineController
+  BarController     // <-- Register BarController
 );
 
 // Removed GradientCalendar component
