@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronLeft, Plus, ChevronDown, Edit, Bell } from 'lucide-react';
+import { ChevronLeft, Plus, ChevronDown, Edit, Bell, GitCommitHorizontal } from 'lucide-react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,8 +10,8 @@ import {
   Title,
   Tooltip,
   Legend,
-  LineController, // <-- Import LineController
-  BarController,    // <-- Import BarController
+  LineController,
+  BarController,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ReactLogo from './assets/profile.png';
@@ -30,11 +30,9 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  LineController, // <-- Register LineController
-  BarController     // <-- Register BarController
+  LineController,
+  BarController
 );
-
-// Removed GradientCalendar component
 
 const InvoiceDashboard = () => {
   const [selectedPeriod, setSelectedPeriod] = useState('3Months');
@@ -73,12 +71,12 @@ const InvoiceDashboard = () => {
   };
 
   const monthData = [
-    { month: 'Jan', income: 3, growth: -20 },
-    { month: 'Feb', income: 4.5, growth: 30 },
-    { month: 'Mar', income: 6, growth: 80 },
-    { month: 'Apr', income: 2, growth: -60 },
-    { month: 'May', income: 5.5, growth: 40 },
-    { month: 'Jun', income: 4, growth: 10 },
+    { month: 'Jan', income: 3.5, growth: 0 },
+    { month: 'Feb', income: 4.8, growth: 35 },
+    { month: 'Mar', income: 6.8, growth: 40 },
+    { month: 'Apr', income: 3.2, growth: -50 },
+    { month: 'May', income: 5.0, growth: 60 },
+    { month: 'Jun', income: 2.5, growth: -50 },
   ];
 
   const data = {
@@ -117,8 +115,10 @@ const InvoiceDashboard = () => {
         display: true,
         position: 'left',
         grid: {
-          display: false,
-          drawOnChartArea: false,
+          drawOnChartArea: true,
+          color: '#f3e9fe',
+          tickColor: '#a743ef',
+          tickLength: 8,
         },
         border: {
           color: '#a743ef',
@@ -126,9 +126,10 @@ const InvoiceDashboard = () => {
         min: 0,
         max: 8,
         ticks: {
-          callback: value => `${value}k`,
+          callback: value => `$${value}k`,
           stepSize: 2,
-          color: '#a743ef',
+          color: '#6B7280',
+          padding: 5,
         },
       },
       y2: {
@@ -136,8 +137,10 @@ const InvoiceDashboard = () => {
         display: true,
         position: 'right',
         grid: {
-          drawOnChartArea: false,
-          color: '#E5E7EB',
+          drawOnChartArea: true,
+          color: '#f3e9fe',
+          tickColor: '#974847',
+          tickLength: 8,
         },
         border: {
           color: '#974847',
@@ -147,7 +150,8 @@ const InvoiceDashboard = () => {
         ticks: {
           callback: value => `${value}%`,
           stepSize: 50,
-          color: '#974847',
+          color: '#6B7280',
+          padding: 5,
         },
       },
       x: {
@@ -155,7 +159,7 @@ const InvoiceDashboard = () => {
           display: false,
         },
         ticks: {
-          color: '#374151',
+          color: '#6B7280',
         },
       },
     },
@@ -173,7 +177,7 @@ const InvoiceDashboard = () => {
             if (context.dataset.type === 'line') {
               label += `${context.raw}%`;
             } else {
-              label += `${context.raw}k`;
+              label += `$${context.raw}k`;
             }
             return label;
           },
@@ -305,7 +309,7 @@ const InvoiceDashboard = () => {
                   <span className="text-xs text-gray-600">income</span>
                 </div>
                 <div className="flex items-center">
-                  <div className="w-3 h-3 bg-[#974847] mr-2"></div>
+                  <GitCommitHorizontal className="w-5 h-5 mr-2" style={{ color: '#974847' }} />
                   <span className="text-xs text-gray-600">momGrowth</span>
                 </div>
               </div>
