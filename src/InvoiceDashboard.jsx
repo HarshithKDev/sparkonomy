@@ -4,6 +4,8 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, PointElement,
 import { Bar } from 'react-chartjs-2';
 import ReactLogo from './assets/profile.png';
 import CalendarIcon from './assets/calender.png';
+import LogoPaw from './assets/logo.png'; 
+import './App.css';
 
 ChartJS.register(
   CategoryScale,
@@ -68,19 +70,19 @@ const InvoiceDashboard = () => {
         type: 'bar',
         label: 'Income',
         data: monthData.map(d => d.income),
-        backgroundColor: '#A855F7', // purple-500
+        backgroundColor: '#A855F7',
         borderColor: '#A855F7',
         borderWidth: 1,
         yAxisID: 'y1',
       },
       {
         type: 'line',
-        label: 'mom Growth',
+        label: 'momGrowth',
         data: monthData.map(d => d.growth),
-        borderColor: '#EF4444', // red-500
-        backgroundColor: '#EF4444',
-        pointBackgroundColor: '#EF4444',
-        pointBorderColor: '#EF4444',
+        borderColor: '#974847',
+        backgroundColor: '#974847',
+        pointBackgroundColor: '#974847',
+        pointBorderColor: '#974847',
         pointRadius: 4,
         yAxisID: 'y2',
         tension: 0.4,
@@ -98,13 +100,17 @@ const InvoiceDashboard = () => {
         position: 'left',
         grid: {
           display: false,
+          drawOnChartArea: false,
+        },
+        border: {
+          color: '#a743ef',
         },
         min: 0,
         max: 8,
         ticks: {
           callback: value => `${value}k`,
           stepSize: 2,
-          color: '#9CA3AF',
+          color: '#a743ef',
         },
       },
       y2: {
@@ -115,12 +121,15 @@ const InvoiceDashboard = () => {
           drawOnChartArea: false,
           color: '#E5E7EB',
         },
+        border: {
+          color: '#974847',
+        },
         min: -100,
         max: 100,
         ticks: {
           callback: value => `${value}%`,
           stepSize: 50,
-          color: '#9CA3AF',
+          color: '#974847',
         },
       },
       x: {
@@ -128,7 +137,7 @@ const InvoiceDashboard = () => {
           display: false,
         },
         ticks: {
-          color: '#9CA3AF',
+          color: '#374151',
         },
       },
     },
@@ -158,7 +167,7 @@ const InvoiceDashboard = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Mobile Header */}
-      <div className="lg:hidden px-4 py-3 flex items-center justify-between border-b" style={{ backgroundColor: '#e7cde6' }}>
+      <div className="lg:hidden px-4 py-3 flex items-center justify-between" style={{ backgroundColor: '#e7cde6' }}>
         <div className="flex items-center">
           <ChevronLeft className="w-5 h-5 text-gray-600" />
           <span className="ml-2 text-gray-600 text-sm">Back</span>
@@ -170,7 +179,7 @@ const InvoiceDashboard = () => {
       </div>
 
       {/* Desktop Header */}
-      <div className="hidden lg:block px-8 py-4 border-b" style={{ backgroundColor: '#e7cde6' }}>
+      <div className="hidden lg:block px-8 py-4" style={{ backgroundColor: '#e7cde6' }}>
         <div className="mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="flex items-center">
             <ChevronLeft className="w-5 h-5 text-gray-600 mr-2" />
@@ -204,9 +213,8 @@ const InvoiceDashboard = () => {
             {/* Moved text */}
             <p className="text-center text-xs text-[#8134AF]">Or upload an existing invoice and set payment reminder</p>
 
-            {/* Time Period Selection */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
-              {/* Flex container for the title and date range */}
+            {/* Time Period Selection (Mobile Only) */}
+            <div className="lg:hidden bg-white rounded-2xl p-6 shadow-sm">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-sm font-medium text-gray-400">Time Period</h3>
                 <p className="text-xs text-gray-400">dd:mm:yyyy - dd:mm:yyyy</p>
@@ -215,50 +223,52 @@ const InvoiceDashboard = () => {
               <div className="flex flex-wrap gap-2 mb-4">
                 <button
                   onClick={() => setSelectedPeriod('1Month')}
-                  className={`px-5 py-2 rounded-full text-sm border transition-colors ${selectedPeriod === '1Month' ? 'bg-purple-600 text-white border-purple-600' : 'bg-white text-gray-400 border-gray-200'}`}
+                  className={`px-5 py-2 rounded-full text-sm border transition-colors ${selectedPeriod === '1Month' ? 'border-[#f3e9ff] bg-[#fbf5fc]' : 'bg-white text-gray-400 border-gray-200'}`}
                 >
-                  1 Month
+                  <span className={selectedPeriod === '1Month' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>1 Month</span>
                 </button>
                 <button
                   onClick={() => setSelectedPeriod('3Months')}
-                  className={`px-5 py-2 rounded-full text-sm border transition-colors ${selectedPeriod === '3Months' ? 'bg-purple-600 text-white border-purple-600' : 'bg-white text-gray-400 border-gray-200'}`}
+                  className={`px-5 py-2 rounded-full text-sm border transition-colors ${selectedPeriod === '3Months' ? 'border-[#f3e9ff] bg-[#fbf5fc]' : 'bg-white text-gray-400 border-gray-200'}`}
                 >
-                  3 Months
+                  <span className={selectedPeriod === '3Months' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>3 Months</span>
                 </button>
                 <button
                   onClick={() => setSelectedPeriod('1Year')}
-                  className={`px-5 py-2 rounded-full text-sm flex items-center border transition-colors ${selectedPeriod === '1Year' ? 'bg-purple-600 text-white border-purple-600' : 'bg-white text-gray-400 border-gray-200'}`}
+                  className={`px-5 py-2 rounded-full text-sm flex items-center border transition-colors ${selectedPeriod === '1Year' ? 'border-[#f3e9ff] bg-[#fbf5fc]' : 'bg-white text-gray-400 border-gray-200'}`}
                 >
-                  1 Year <Crown className="w-3 h-3 ml-1 text-yellow-500" />
+                  <span className={selectedPeriod === '1Year' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>1 Year</span> <Crown className={`w-3 h-3 ml-1 text-yellow-500`} />
                 </button>
               </div>
               <button 
                 onClick={() => setSelectedPeriod('Custom')}
-                className={`px-4 py-2 rounded-full text-sm flex items-center border transition-colors ${selectedPeriod === 'Custom' ? 'bg-purple-600 text-white border-purple-600' : 'bg-white text-gray-400 border-gray-300'}`}
+                className={`px-4 py-2 rounded-full text-sm flex items-center border transition-colors ${selectedPeriod === 'Custom' ? 'border-[#f3e9ff] bg-[#fbf5fc]' : 'bg-white text-gray-400 border-gray-300'}`}
               >
                 {/* Replaced emoji with image icon */}
                 <img src={CalendarIcon} alt="Calendar Icon" className={`w-6 h-6 p-0 mr-2 ${selectedPeriod === 'Custom' ? 'filter invert' : ''}`} />
-                Custom
+                <span className={selectedPeriod === 'Custom' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>Custom</span>
               </button>
             </div>
-
-            {/* Total Earnings */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
-              <h3 className="text-sm font-medium text-gray-400 mb-2">Total Earnings</h3>
-              <p className="text-3xl font-semibold text-[#8134AF]">$1,25,000</p>
-            </div>
-
-            {/* Payment Status - Side by side for all screen sizes */}
-            <div className="grid grid-cols-2 gap-4">
-              {/* Payment Awaited */}
+            
+            {/* Financial Summary sections on mobile */}
+            <div className="lg:hidden space-y-6">
+              {/* Total Earnings */}
               <div className="bg-white rounded-2xl p-6 shadow-sm">
-                <h4 className="text-sm font-medium text-gray-400 mb-1">Payment Awaited</h4>
-                <p className="text-xl font-semibold text-[#8134AF]">$25,000</p>
+                <h3 className="text-sm font-medium text-gray-400 mb-2">Total Earnings</h3>
+                <p className="text-3xl font-semibold text-[#8134AF]">$1,25,000</p>
               </div>
-              {/* Payment Overdue */}
-              <div className="bg-white rounded-2xl p-6 shadow-sm">
-                <h4 className="text-sm font-medium text-gray-400 mb-1">Payment Overdue</h4>
-                <p className="text-xl font-semibold text-[#8134AF]">$25,000</p>
+              {/* Payment Status - Side by side for all screen sizes */}
+              <div className="grid grid-cols-2 gap-4">
+                {/* Payment Awaited */}
+                <div className="bg-white rounded-2xl p-6 shadow-sm">
+                  <h4 className="text-sm font-medium text-gray-400 mb-1">Payment Awaited</h4>
+                  <p className="text-xl font-semibold text-[#8134AF]">$25,000</p>
+                </div>
+                {/* Payment Overdue */}
+                <div className="bg-white rounded-2xl p-6 shadow-sm">
+                  <h4 className="text-sm font-medium text-gray-400 mb-1">Payment Overdue</h4>
+                  <p className="text-xl font-semibold text-[#8134AF]">$25,000</p>
+                </div>
               </div>
             </div>
 
@@ -274,18 +284,78 @@ const InvoiceDashboard = () => {
               {/* Legend */}
               <div className="flex items-center justify-center mt-4 space-x-6">
                 <div className="flex items-center">
-                  <div className="w-3 h-3 bg-purple-500 rounded mr-2"></div>
-                  <span className="text-xs text-gray-600">Income</span>
+                  <div className="w-3 h-3 bg-[#A855F7] mr-2"></div>
+                  <span className="text-xs text-gray-600">income</span>
                 </div>
                 <div className="flex items-center">
-                  <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
-                  <span className="text-xs text-gray-600">mom Growth</span>
+                  <div className="w-3 h-3 bg-[#974847] mr-2"></div>
+                  <span className="text-xs text-gray-600">momGrowth</span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Column - Removed as per request */}
+          {/* Right Column - Financial Summary (Desktop Only) */}
+          <div className="hidden lg:flex lg:col-span-1 flex-col gap-6">
+            {/* Time Period Selection (Desktop Only) */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-sm font-medium text-gray-400">Time Period</h3>
+                <p className="text-xs text-gray-400">dd:mm:yyyy - dd:mm:yyyy</p>
+              </div>
+
+              <div className="flex flex-wrap gap-2 mb-4">
+                <button
+                  onClick={() => setSelectedPeriod('1Month')}
+                  className={`px-5 py-2 rounded-full text-sm border transition-colors ${selectedPeriod === '1Month' ? 'border-[#f3e9ff] bg-[#fbf5fc]' : 'bg-white text-gray-400 border-gray-200'}`}
+                >
+                  <span className={selectedPeriod === '1Month' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>1 Month</span>
+                </button>
+                <button
+                  onClick={() => setSelectedPeriod('3Months')}
+                  className={`px-5 py-2 rounded-full text-sm border transition-colors ${selectedPeriod === '3Months' ? 'border-[#f3e9ff] bg-[#fbf5fc]' : 'bg-white text-gray-400 border-gray-200'}`}
+                >
+                  <span className={selectedPeriod === '3Months' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>3 Months</span>
+                </button>
+                <button
+                  onClick={() => setSelectedPeriod('1Year')}
+                  className={`px-5 py-2 rounded-full text-sm flex items-center border transition-colors ${selectedPeriod === '1Year' ? 'border-[#f3e9ff] bg-[#fbf5fc]' : 'bg-white text-gray-400 border-gray-200'}`}
+                >
+                  <span className={selectedPeriod === '1Year' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>1 Year</span> <Crown className={`w-3 h-3 ml-1 text-yellow-500`} />
+                </button>
+              </div>
+              <button 
+                onClick={() => setSelectedPeriod('Custom')}
+                className={`px-4 py-2 rounded-full text-sm flex items-center border transition-colors ${selectedPeriod === 'Custom' ? 'border-[#f3e9ff] bg-[#fbf5fc]' : 'bg-white text-gray-400 border-gray-300'}`}
+              >
+                {/* Replaced emoji with image icon */}
+                <img src={CalendarIcon} alt="Calendar Icon" className={`w-6 h-6 p-0 mr-2 ${selectedPeriod === 'Custom' ? 'filter invert' : ''}`} />
+                <span className={selectedPeriod === 'Custom' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>Custom</span>
+              </button>
+            </div>
+            
+            <div className="flex-grow flex flex-col gap-6">
+              {/* Total Earnings */}
+              <div className="bg-white rounded-2xl p-6 shadow-sm flex-grow">
+                <h3 className="text-sm font-medium text-gray-400 mb-2">Total Earnings</h3>
+                <p className="text-3xl font-semibold text-[#8134AF]">$1,25,000</p>
+              </div>
+              
+              {/* Payment Status - Side by side for all screen sizes */}
+              <div className="grid grid-cols-2 gap-4 flex-grow">
+                {/* Payment Awaited */}
+                <div className="bg-white rounded-2xl p-6 shadow-sm">
+                  <h4 className="text-sm font-medium text-gray-400 mb-1">Payment Awaited</h4>
+                  <p className="text-xl font-semibold text-[#8134AF]">$25,000</p>
+                </div>
+                {/* Payment Overdue */}
+                <div className="bg-white rounded-2xl p-6 shadow-sm">
+                  <h4 className="text-sm font-medium text-gray-400 mb-1">Payment Overdue</h4>
+                  <p className="text-xl font-semibold text-[#8134AF]">$25,000</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Invoices List */}
@@ -332,10 +402,10 @@ const InvoiceDashboard = () => {
 
         {/* Footer */}
         <div className="mt-8 text-center">
-          <p className="text-sm text-gray-400">
-            <span className="font-medium">Sparks</span>Penny
+          <p className="text-sm text-gray-400 flex items-center justify-center">
+            <img src={LogoPaw} alt="Sparkonomy Paw Logo" className="inline-block h-4 w-max mx-1" />
           </p>
-          <p className="text-xs text-gray-300 mt-1">Powering the modern economy</p>
+          <p className="text-xs text-gray-400 mt-1">sparking the creator economy</p>
         </div>
       </div>
     </div>
