@@ -1,5 +1,4 @@
 import InvoiceDashboard from './InvoiceDashboard';
-import './App.css';
 
 function App() {
   return (
