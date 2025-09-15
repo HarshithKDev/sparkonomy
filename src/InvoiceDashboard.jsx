@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { ChevronLeft, Plus, ChevronDown, Edit, Bell, Crown, Calendar } from 'lucide-react';
+import { ChevronLeft, Plus, ChevronDown, Edit, Bell } from 'lucide-react'; // Removed Calendar from import
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ReactLogo from './assets/profile.png';
-import LogoPaw from './assets/logo.png'; 
+import LogoPaw from './assets/logo.png';
+import CrownImage from './assets/crown.png'; 
+import GradientCalendarImage from './assets/calender-2.png'; // Assuming you save the gradient calendar image in assets
+import GreyCalendarImage from './assets/calender-3.png'; // Assuming you save the grey calendar image in assets
 import './App.css';
 
 ChartJS.register(
@@ -17,6 +20,8 @@ ChartJS.register(
   Legend
 );
 
+// Removed GradientCalendar component
+
 const InvoiceDashboard = () => {
   const [selectedPeriod, setSelectedPeriod] = useState('3Months');
   const [isInvoiceExpanded, setIsInvoiceExpanded] = useState(true);
@@ -24,7 +29,7 @@ const InvoiceDashboard = () => {
   const toggleInvoiceExpansion = () => {
     setIsInvoiceExpanded(!isInvoiceExpanded);
   };
-  
+
   const invoices = [
     { id: 1, client: 'Client Name', amount: '€1,25,000', date: '2024-06-15', status: 'Update Status' },
     { id: 2, client: 'Client Name', amount: '€1,25,000', date: '2024-06-15', status: 'Unpaid' },
@@ -236,15 +241,14 @@ const InvoiceDashboard = () => {
                   onClick={() => setSelectedPeriod('1Year')}
                   className={`px-5 py-2 rounded-full text-sm flex items-center border transition-colors ${selectedPeriod === '1Year' ? 'border-[#f3e9ff] bg-[#fbf5fc]' : 'bg-white text-gray-400 border-gray-200'}`}
                 >
-                  <span className={selectedPeriod === '1Year' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>1 Year</span> <Crown className={`w-3 h-3 ml-1 text-yellow-500`} />
+                  <span className={selectedPeriod === '1Year' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>1 Year</span> <img src={CrownImage} alt="Crown" className="w-4 h-4 ml-1" />
                 </button>
               </div>
               <button 
                 onClick={() => setSelectedPeriod('Custom')}
                 className={`px-4 py-2 rounded-full text-sm flex items-center border transition-colors ${selectedPeriod === 'Custom' ? 'border-[#f3e9ff] bg-[#fbf5fc]' : 'bg-white text-gray-400 border-gray-300'}`}
               >
-                {/* Replaced image with icon */}
-                <Calendar className={`w-5 h-5 p-0 mr-2 ${selectedPeriod === 'Custom' ? 'text-black' : 'text-gray-400'}`} />
+                <img src={selectedPeriod === 'Custom' ? GradientCalendarImage : GreyCalendarImage} alt="Calendar" className="w-5 h-5 p-0 mr-2" />
                 <span className={selectedPeriod === 'Custom' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>Custom</span>
               </button>
             </div>
@@ -320,15 +324,14 @@ const InvoiceDashboard = () => {
                   onClick={() => setSelectedPeriod('1Year')}
                   className={`px-5 py-2 rounded-full text-sm flex items-center border transition-colors ${selectedPeriod === '1Year' ? 'border-[#f3e9ff] bg-[#fbf5fc]' : 'bg-white text-gray-400 border-gray-200'}`}
                 >
-                  <span className={selectedPeriod === '1Year' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>1 Year</span> <Crown className={`w-3 h-3 ml-1 text-yellow-500`} />
+                  <span className={selectedPeriod === '1Year' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>1 Year</span> <img src={CrownImage} alt="Crown" className="w-4 h-4 ml-1" />
                 </button>
               </div>
               <button 
                 onClick={() => setSelectedPeriod('Custom')}
                 className={`px-4 py-2 rounded-full text-sm flex items-center border transition-colors ${selectedPeriod === 'Custom' ? 'border-[#f3e9ff] bg-[#fbf5fc]' : 'bg-white text-gray-400 border-gray-300'}`}
               >
-                {/* Replaced image with icon */}
-                <Calendar className={`w-5 h-5 p-0 mr-2 ${selectedPeriod === 'Custom' ? 'text-black' : 'text-gray-400'}`} />
+                <img src={selectedPeriod === 'Custom' ? GradientCalendarImage : GreyCalendarImage} alt="Calendar" className="w-5 h-5 p-0 mr-2" />
                 <span className={selectedPeriod === 'Custom' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>Custom</span>
               </button>
             </div>
