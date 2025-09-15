@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { ChevronLeft, Plus, ChevronDown, Edit, Bell, Crown } from 'lucide-react';
+import { ChevronLeft, Plus, ChevronDown, Edit, Bell, Crown, Calendar } from 'lucide-react';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ReactLogo from './assets/profile.png';
-import CalendarIcon from './assets/calender.png';
 import LogoPaw from './assets/logo.png'; 
 import './App.css';
 
@@ -67,15 +66,6 @@ const InvoiceDashboard = () => {
     labels: monthData.map(d => d.month),
     datasets: [
       {
-        type: 'bar',
-        label: 'Income',
-        data: monthData.map(d => d.income),
-        backgroundColor: '#A855F7',
-        borderColor: '#A855F7',
-        borderWidth: 1,
-        yAxisID: 'y1',
-      },
-      {
         type: 'line',
         label: 'momGrowth',
         data: monthData.map(d => d.growth),
@@ -83,9 +73,18 @@ const InvoiceDashboard = () => {
         backgroundColor: '#974847',
         pointBackgroundColor: '#974847',
         pointBorderColor: '#974847',
-        pointRadius: 4,
+        pointRadius: 0,
         yAxisID: 'y2',
         tension: 0.4,
+      },
+      {
+        type: 'bar',
+        label: 'Income',
+        data: monthData.map(d => d.income),
+        backgroundColor: '#A855F7',
+        borderColor: '#A855F7',
+        borderWidth: 1,
+        yAxisID: 'y1',
       },
     ],
   };
@@ -244,8 +243,8 @@ const InvoiceDashboard = () => {
                 onClick={() => setSelectedPeriod('Custom')}
                 className={`px-4 py-2 rounded-full text-sm flex items-center border transition-colors ${selectedPeriod === 'Custom' ? 'border-[#f3e9ff] bg-[#fbf5fc]' : 'bg-white text-gray-400 border-gray-300'}`}
               >
-                {/* Replaced emoji with image icon */}
-                <img src={CalendarIcon} alt="Calendar Icon" className={`w-6 h-6 p-0 mr-2 ${selectedPeriod === 'Custom' ? 'filter invert' : ''}`} />
+                {/* Replaced image with icon */}
+                <Calendar className={`w-5 h-5 p-0 mr-2 ${selectedPeriod === 'Custom' ? 'text-black' : 'text-gray-400'}`} />
                 <span className={selectedPeriod === 'Custom' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>Custom</span>
               </button>
             </div>
@@ -328,8 +327,8 @@ const InvoiceDashboard = () => {
                 onClick={() => setSelectedPeriod('Custom')}
                 className={`px-4 py-2 rounded-full text-sm flex items-center border transition-colors ${selectedPeriod === 'Custom' ? 'border-[#f3e9ff] bg-[#fbf5fc]' : 'bg-white text-gray-400 border-gray-300'}`}
               >
-                {/* Replaced emoji with image icon */}
-                <img src={CalendarIcon} alt="Calendar Icon" className={`w-6 h-6 p-0 mr-2 ${selectedPeriod === 'Custom' ? 'filter invert' : ''}`} />
+                {/* Replaced image with icon */}
+                <Calendar className={`w-5 h-5 p-0 mr-2 ${selectedPeriod === 'Custom' ? 'text-black' : 'text-gray-400'}`} />
                 <span className={selectedPeriod === 'Custom' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>Custom</span>
               </button>
             </div>
