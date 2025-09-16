@@ -4,7 +4,7 @@ import GradientCalendarImage from '../assets/calender-2.png';
 import GreyCalendarImage from '../assets/calender-3.png';
 
 const TimePeriodSelection = ({ selectedPeriod, setSelectedPeriod }) => {
-  const [dateRange, setDateRange] = useState('dd:mm:yyyy - dd:mm:yyyy');
+  const [dateRange, setDateRange] = useState('dd-mm-yyyy - dd-mm-yyyy');
 
   useEffect(() => {
     const today = new Date();
@@ -21,7 +21,7 @@ const TimePeriodSelection = ({ selectedPeriod, setSelectedPeriod }) => {
         startDate = new Date(today.getFullYear(), 0, 1); // January 1st
         break;
       default:
-        setDateRange('dd:mm:yyyy - dd:mm:yyyy');
+        setDateRange('dd-mm-yyyy - dd-mm-yyyy');
         return;
     }
 
@@ -31,7 +31,7 @@ const TimePeriodSelection = ({ selectedPeriod, setSelectedPeriod }) => {
       const day = String(date.getDate()).padStart(2, '0');
       const month = String(date.getMonth() + 1).padStart(2, '0');
       const year = date.getFullYear();
-      return `${day}:${month}:${year}`;
+      return `${day}-${month}-${year}`;
     };
 
     setDateRange(`${format(startDate)} - ${format(endDate)}`);

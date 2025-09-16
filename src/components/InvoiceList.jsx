@@ -6,18 +6,18 @@ const InvoiceList = () => {
   const toggleInvoiceExpansion = () => setIsInvoiceExpanded(!isInvoiceExpanded);
 
   const invoices = [
-    { id: 1, client: 'Innovate LLC', amount: '$2,500', date: '2024-06-22', status: 'Update Status' },
-    { id: 2, client: 'Quantum Solutions', amount: '$3,200', date: '2024-06-28', status: 'Unpaid' },
-    { id: 3, client: 'Synergy Corp', amount: '$1,800', date: '2024-06-15', status: 'Disputed' },
-    { id: 4, client: 'Apex Industries', amount: '$3,800', date: '2024-05-30', status: 'Paid' },
-    { id: 5, client: 'Momentum Tech', amount: '$4,200', date: '2024-06-05', status: 'Partially Paid' },
-    { id: 6, client: 'Zenith Group', amount: '$2,200', date: '2024-04-20', status: 'Paid' },
-    { id: 7, client: 'Phoenix Digital', amount: '$1,500', date: '2024-05-10', status: 'Overdue' },
-    { id: 8, client: 'Vortex Inc.', amount: '$3,750', date: '2024-06-25', status: 'Awaited' },
-    { id: 9, client: 'Catalyst Co.', amount: '$850', date: '2024-06-20', status: 'Draft' },
-    { id: 10, client: 'Orion Systems', amount: '$4,500', date: '2024-03-18', status: 'Paid' },
-    { id: 11, client: 'Nova Creative', amount: '$2,900', date: '2024-02-25', status: 'Paid' },
-    { id: 12, client: 'Pioneer Labs', amount: '$1,500', date: '2024-01-25', status: 'Paid'},
+    { id: 1, client: 'Innovate LLC', amount: '$2,500', date: '22-06-2024', status: 'Update Status' },
+    { id: 2, client: 'Quantum Solutions', amount: '$3,200', date: '28-06-2024', status: 'Unpaid' },
+    { id: 3, client: 'Synergy Corp', amount: '$1,800', date: '15-06-2024', status: 'Disputed' },
+    { id: 4, client: 'Apex Industries', amount: '$3,800', date: '30-05-2024', status: 'Paid' },
+    { id: 5, client: 'Momentum Tech', amount: '$4,200', date: '05-06-2024', status: 'Partially Paid' },
+    { id: 6, client: 'Zenith Group', amount: '$2,200', date: '20-04-2024', status: 'Paid' },
+    { id: 7, client: 'Phoenix Digital', amount: '$1,500', date: '10-05-2024', status: 'Overdue' },
+    { id: 8, client: 'Vortex Inc.', amount: '$3,750', date: '25-06-2024', status: 'Awaited' },
+    { id: 9, client: 'Catalyst Co.', amount: '$850', date: '20-06-2024', status: 'Draft' },
+    { id: 10, client: 'Orion Systems', amount: '$4,500', date: '18-03-2024', status: 'Paid' },
+    { id: 11, client: 'Nova Creative', amount: '$2,900', date: '25-02-2024', status: 'Paid' },
+    { id: 12, client: 'Pioneer Labs', amount: '$1,500', date: '25-01-2024', status: 'Paid'},
   ];
 
   const getStatusStyle = (status) => {
@@ -56,11 +56,11 @@ const InvoiceList = () => {
     <div className="mt-8">
       <div className="bg-white rounded-2xl shadow-sm">
         <div
-          className="p-6 border-b border-gray-100 flex items-center justify-between cursor-pointer"
+          className="px-4 lg:px-6 pt-6 pb-4 border-b border-gray-100 flex items-center justify-between cursor-pointer"
           onClick={toggleInvoiceExpansion}
         >
           <h3 className="text-lg font-semibold text-gray-400">Your Invoices</h3>
-          <ChevronDown className={`w-5 h-5 text-gray-400 transform transition-transform duration-300 ${isInvoiceExpanded ? '' : '-rotate-180'}`} />
+          <ChevronDown className={`w-5 h-5 text-gray-400 transform transition-transform duration-300 ${isInvoiceExpanded ? '-rotate-180' : ''}`} />
         </div>
         <div className={`overflow-hidden transition-[max-height] duration-500 ease-in-out ${isInvoiceExpanded ? 'max-h-[100rem]' : 'max-h-0'}`}>
           <div className="divide-y divide-gray-100">
