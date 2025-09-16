@@ -19,17 +19,35 @@ const InvoiceList = () => {
     { id: 11, client: 'Income Trend', amount: '€1,25,000', date: '2024-06-15', status: 'Paid' },
   ];
 
-  const getStatusColor = (status) => {
+  const getStatusStyle = (status) => {
+    const style = {
+      width: '112px', // w-28
+      textAlign: 'center',
+      padding: '0.25rem 0.75rem', // px-3 py-1
+      borderRadius: '9999px', // rounded-full
+      fontSize: '0.75rem', // text-xs
+      fontWeight: '500', // font-medium
+    };
+
     switch (status) {
-      case 'Update Status': return 'bg-purple-500';
-      case 'Unpaid': return 'bg-gray-400';
-      case 'Disputed': return 'bg-red-400';
-      case 'Paid': return 'bg-green-400';
-      case 'Partially Paid': return 'bg-yellow-400';
-      case 'Overdue': return 'bg-red-500';
-      case 'Awaited': return 'bg-orange-400';
-      case 'Draft': return 'bg-gray-300';
-      default: return 'bg-gray-400';
+      case 'Update Status':
+        return { ...style, backgroundColor: '#8134af', color: 'white' };
+      case 'Unpaid':
+        return { ...style, backgroundColor: '#f2f2f2', color: 'black' };
+      case 'Disputed':
+        return { ...style, backgroundColor: '#ffb1b1', color: 'black' };
+      case 'Paid':
+        return { ...style, backgroundColor: '#9cefb8', color: 'black' };
+      case 'Partially Paid':
+        return { ...style, backgroundColor: '#fffae5', color: 'black' };
+      case 'Overdue':
+        return { ...style, backgroundColor: '#ffb1b1', color: 'black' };
+      case 'Awaited':
+        return { ...style, backgroundColor: '#fffae5', color: 'black' };
+      case 'Draft':
+        return { ...style, backgroundColor: '#f2f2f2', color: 'black' };
+      default:
+        return { ...style, backgroundColor: '#f2f2f2', color: 'black' };
     }
   };
 
@@ -51,12 +69,14 @@ const InvoiceList = () => {
                   <h4 className="font-medium text-gray-900 mb-1">{invoice.client}</h4>
                   <p className="text-sm text-gray-500">{invoice.amount}, Due: {invoice.date}</p>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <span className={`px-3 py-1 rounded-full text-xs font-medium text-white ${getStatusColor(invoice.status)}`}>
+                <div className="flex items-center justify-end" style={{ width: '180px' }}>
+                  <span style={getStatusStyle(invoice.status)}>
                     {invoice.status}
                   </span>
-                  {(invoice.status === 'Overdue' || invoice.status === 'Awaited') && <Bell className="w-4 h-4 text-gray-400" />}
-                  {invoice.status === 'Draft' && <Edit className="w-4 h-4 text-gray-400" />}
+                  <div className="w-8 text-right">
+                    {(invoice.status === 'Overdue' || invoice.status === 'Awaited') && <Bell className="w-4 h-4 text-gray-400 inline-block" />}
+                    {invoice.status === 'Draft' && <Edit className="w-4 h-4 text-gray-400 inline-block" />}
+                  </div>
                 </div>
               </div>
             ))}
