@@ -37,9 +37,10 @@ const InvoiceList = () => {
    */
   const getStatusStyle = (status) => {
     const baseStyle = {
-      width: '130px', // Set a fixed width for all buttons to ensure uniformity
+      width: '130px',
+      position: 'relative', // Set button as a relative container
       textAlign: 'center',
-      padding: '0.25rem 0.75rem',
+      padding: '0.25rem 1.5rem 0.25rem 0.75rem', // Adjust padding to make space for the arrow
       borderRadius: '9999px',
       fontSize: '0.75rem',
       fontWeight: '600',
@@ -144,11 +145,19 @@ const InvoiceList = () => {
                   <div className="relative">
                     <button
                       style={getStatusStyle(invoice.status)}
-                      className="flex items-center justify-center whitespace-nowrap"
+                      className="whitespace-nowrap"
                       onClick={() => setEditingInvoiceId(editingInvoiceId === invoice.id ? null : invoice.id)}
                     >
-                      <span>{invoice.status}</span>
-                      <ChevronDown className="w-4 h-4 ml-1" />
+                      {invoice.status}
+                      <ChevronDown
+                        className="w-4 h-4"
+                        style={{
+                          position: 'absolute',
+                          right: '0.75rem', // 12px
+                          top: '50%',
+                          transform: 'translateY(-50%)',
+                        }}
+                      />
                     </button>
                     {editingInvoiceId === invoice.id && (
                       <div className="absolute top-full mt-2 w-full bg-white rounded-md shadow-lg z-10 border border-gray-100">
