@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import CrownImage from '../assets/crown.png';
-import GradientCalendarImage from '../assets/calender-2.png';
-import GreyCalendarImage from '../assets/calender-3.png';
+import GradientCalendarImage from '../assets/gradientcal.png';
+import GreyCalendarImage from '../assets/graycal.png';
 
 const TimePeriodSelection = ({ selectedPeriod, setSelectedPeriod }) => {
   const [dateRange, setDateRange] = useState('dd-mm-yyyy - dd-mm-yyyy');
