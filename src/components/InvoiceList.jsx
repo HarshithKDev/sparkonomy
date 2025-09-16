@@ -9,14 +9,15 @@ const InvoiceList = () => {
     { id: 1, client: 'Innovate LLC', amount: '$2,500', date: '2024-06-22', status: 'Update Status' },
     { id: 2, client: 'Quantum Solutions', amount: '$3,200', date: '2024-06-28', status: 'Unpaid' },
     { id: 3, client: 'Synergy Corp', amount: '$1,800', date: '2024-06-15', status: 'Disputed' },
-    { id: 4, client: 'Apex Industries', amount: '$5,000', date: '2024-05-30', status: 'Paid' },
-    { id: 5, client: 'Momentum Tech', amount: '$4,100', date: '2024-06-05', status: 'Partially Paid' },
+    { id: 4, client: 'Apex Industries', amount: '$3,800', date: '2024-05-30', status: 'Paid' },
+    { id: 5, client: 'Momentum Tech', amount: '$4,200', date: '2024-06-05', status: 'Partially Paid' },
     { id: 6, client: 'Zenith Group', amount: '$2,200', date: '2024-04-20', status: 'Paid' },
     { id: 7, client: 'Phoenix Digital', amount: '$1,500', date: '2024-05-10', status: 'Overdue' },
     { id: 8, client: 'Vortex Inc.', amount: '$3,750', date: '2024-06-25', status: 'Awaited' },
     { id: 9, client: 'Catalyst Co.', amount: '$850', date: '2024-06-20', status: 'Draft' },
-    { id: 10, client: 'Orion Systems', amount: '$6,200', date: '2024-03-18', status: 'Paid' },
+    { id: 10, client: 'Orion Systems', amount: '$4,500', date: '2024-03-18', status: 'Paid' },
     { id: 11, client: 'Nova Creative', amount: '$2,900', date: '2024-02-25', status: 'Paid' },
+    { id: 12, client: 'Pioneer Labs', amount: '$1,500', date: '2024-01-25', status: 'Paid'},
   ];
 
   const getStatusStyle = (status) => {

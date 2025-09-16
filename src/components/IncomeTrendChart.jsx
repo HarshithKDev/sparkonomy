@@ -31,12 +31,12 @@ ChartJS.register(
 const IncomeTrendChart = () => {
   // Calculated data based on your invoices
   const monthData = [
-    { month: 'Jan', income: 0, growth: 0 },
-    { month: 'Feb', income: 2.9, growth: 0 },
-    { month: 'Mar', income: 6.2, growth: 114 },
-    { month: 'Apr', income: 2.2, growth: -65 },
-    { month: 'May', income: 5.0, growth: 127 },
-    { month: 'Jun', income: 4.1, growth: -18 },
+    { month: 'Jan', income: 1.5, growth: 0 },
+    { month: 'Feb', income: 2.9, growth: 93 },
+    { month: 'Mar', income: 4.5, growth: 55 },
+    { month: 'Apr', income: 2.2, growth: -51 },
+    { month: 'May', income: 3.8, growth: 73 },
+    { month: 'Jun', income: 4.2, growth: 11 },
   ];
 
   const data = {
@@ -48,9 +48,10 @@ const IncomeTrendChart = () => {
         data: monthData.map(d => d.growth),
         borderColor: '#974847',
         backgroundColor: '#974847',
-        pointBackgroundColor: '#974847',
+        pointBackgroundColor: 'white',
         pointBorderColor: '#974847',
-        pointRadius: 0,
+        pointRadius: 4,
+        pointBorderWidth: 2,
         yAxisID: 'y2',
         tension: 0.4,
       },
@@ -70,8 +71,8 @@ const IncomeTrendChart = () => {
     responsive: true,
     maintainAspectRatio: false,
     animation: {
-      duration: 1000, // 1-second animation
-      easing: 'easeInOutQuart', // Smooth easing effect
+      duration: 1000,
+      easing: 'easeInOutQuart',
     },
     scales: {
       y1: {
@@ -91,8 +92,13 @@ const IncomeTrendChart = () => {
         grid: { drawOnChartArea: false }, 
         border: { color: '#974847' },
         min: -100,
-        max: 150,
-        ticks: { callback: value => `${value}%`, stepSize: 50, color: '#6B7280', padding: 5 },
+        max: 100,
+        ticks: { 
+          stepSize: 50, 
+          color: '#6B7280', 
+          padding: 5,
+          callback: value => `${value}%`
+        },
       },
       x: {
         grid: { display: false },

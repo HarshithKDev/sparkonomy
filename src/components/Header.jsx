@@ -21,9 +21,9 @@ const Header = () => (
       <div className="mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center">
           <ChevronLeft className="w-5 h-5 text-gray-600 mr-2" />
-          <span className="text-gray-600 mr-6">Back</span>
-          <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
+          <span className="text-gray-600">Back</span>
         </div>
+        <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
         <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center overflow-hidden">
           <img src={ReactLogo} alt="Profile" className="w-full h-full object-cover" />
         </div>
