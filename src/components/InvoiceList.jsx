@@ -133,7 +133,7 @@ const InvoiceList = () => {
         </div>
         <div className={`overflow-hidden transition-[max-height] duration-500 ease-in-out ${isInvoiceExpanded ? 'max-h-[100rem]' : 'max-h-0'}`}>
           <div className="divide-y divide-gray-100">
-            {invoices.map((invoice, index) => (
+            {invoices.map((invoice) => (
               <div key={invoice.id} className="p-4 lg:p-6 flex items-center justify-between hover:bg-gray-50">
                 <div className="flex-1">
                   <h4 className="font-medium text-gray-900 mb-1">{invoice.client}</h4>
@@ -142,37 +142,29 @@ const InvoiceList = () => {
                 </div>
                 <div className="flex items-center justify-end" style={{ width: '180px' }}>
                   <div className="relative">
-                    {index === 0 ? (
-                      <>
-                        <button
-                          style={getStatusStyle(invoice.status)}
-                          className="flex items-center justify-center whitespace-nowrap"
-                          onClick={() => setEditingInvoiceId(editingInvoiceId === invoice.id ? null : invoice.id)}
-                        >
-                          {invoice.status}
-                          <ChevronDown className="w-4 h-4 ml-1" />
-                        </button>
-                        {editingInvoiceId === invoice.id && (
-                          <div className="absolute top-full mt-2 w-full bg-white rounded-md shadow-lg z-10 border border-gray-100">
-                            <ul className="py-1">
-                              {statusOptions.map(option => (
-                                <li key={option}>
-                                  <button
-                                    onClick={() => handleStatusChange(invoice.id, option)}
-                                    className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-100 ${getStatusTextColor(option)}`}
-                                  >
-                                    {option}
-                                  </button>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                      </>
-                    ) : (
-                      <span style={getStatusStyle(invoice.status)} className="flex items-center justify-center whitespace-nowrap">
-                        {invoice.status}
-                      </span>
+                    <button
+                      style={getStatusStyle(invoice.status)}
+                      className="flex items-center justify-center whitespace-nowrap"
+                      onClick={() => setEditingInvoiceId(editingInvoiceId === invoice.id ? null : invoice.id)}
+                    >
+                      {invoice.status}
+                      <ChevronDown className="w-4 h-4 ml-1" />
+                    </button>
+                    {editingInvoiceId === invoice.id && (
+                      <div className="absolute top-full mt-2 w-full bg-white rounded-md shadow-lg z-10 border border-gray-100">
+                        <ul className="py-1">
+                          {statusOptions.map(option => (
+                            <li key={option}>
+                              <button
+                                onClick={() => handleStatusChange(invoice.id, option)}
+                                className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-100 ${getStatusTextColor(option)}`}
+                              >
+                                {option}
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     )}
                   </div>
                   <div className="w-8 text-right">
