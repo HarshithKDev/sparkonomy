@@ -66,49 +66,55 @@ const TimePeriodSelection = ({ selectedPeriod, setSelectedPeriod }) => {
         <h3 className="text-sm font-medium text-gray-400">Time Period</h3>
         <p className="text-xs text-gray-400">{dateRange}</p>
       </div>
-      <div className="grid grid-cols-3 gap-2">
-        <button
-          onClick={() => setSelectedPeriod('1Month')}
-          className={`px-5 py-2 rounded-full text-sm border transition-colors ${selectedPeriod === '1Month' ? 'border-[#f3e9ff] bg-[#fbf5fc]' : 'bg-white text-gray-400 border-gray-200 hover:bg-gray-100'}`}
-        >
-          <span className={selectedPeriod === '1Month' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>1 Month</span>
-        </button>
-        <button
-          onClick={() => setSelectedPeriod('3Months')}
-          className={`px-5 py-2 rounded-full text-sm border transition-colors ${selectedPeriod === '3Months' ? 'border-[#f3e9ff] bg-[#fbf5fc]' : 'bg-white text-gray-400 border-gray-200 hover:bg-gray-100'}`}
-        >
-          <span className={selectedPeriod === '3Months' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>3 Months</span>
-        </button>
-        <button
-          onClick={() => setSelectedPeriod('1Year')}
-          className={`px-5 py-2 rounded-full text-sm flex items-center justify-center border transition-colors ${selectedPeriod === '1Year' ? 'border-[#f3e9ff] bg-[#fbf5fc]' : 'bg-white text-gray-400 border-gray-200 hover:bg-gray-100'}`}
-        >
-          <span className={selectedPeriod === '1Year' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>1 Year</span> <img src={CrownImage} alt="Crown" className="w-4 h-4 ml-1" />
-        </button>
-        <div className="relative">
+      <div className="flex flex-col gap-2">
+        <div className="flex gap-2">
           <button
-            onClick={() => {
-              setSelectedPeriod('Custom');
-              setIsDatePickerOpen(!isDatePickerOpen);
-            }}
-            className={`w-full px-5 py-2 rounded-full text-sm flex items-center justify-center border transition-colors ${selectedPeriod === 'Custom' ? 'border-[#f3e9ff] bg-[#fbf5fc]' : 'bg-white text-gray-400 border-gray-300 hover:bg-gray-100'}`}
+            onClick={() => setSelectedPeriod('1Month')}
+            className={`flex-1 px-5 py-2 rounded-full text-sm border transition-colors ${selectedPeriod === '1Month' ? 'border-[#f3e9ff] bg-[#fbf5fc]' : 'bg-white text-gray-400 border-gray-200 hover:bg-gray-100'}`}
           >
-            <img src={selectedPeriod === 'Custom' ? GradientCalendarImage : GreyCalendarImage} alt="Calendar" className="w-5 h-5 p-0 mr-2" />
-            <span className={selectedPeriod === 'Custom' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>Custom</span>
+            <span className={selectedPeriod === '1Month' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>1 Month</span>
           </button>
-          {isDatePickerOpen && (
-            <div className="absolute top-full mt-2 z-10">
-              <DatePicker
-                selected={customStartDate}
-                onChange={handleCustomDateChange}
-                startDate={customStartDate}
-                endDate={customEndDate}
-                selectsRange
-                inline
-                onClickOutside={() => setIsDatePickerOpen(false)}
-              />
-            </div>
-          )}
+          <button
+            onClick={() => setSelectedPeriod('3Months')}
+            className={`flex-1 px-5 py-2 rounded-full text-sm border transition-colors ${selectedPeriod === '3Months' ? 'border-[#f3e9ff] bg-[#fbf5fc]' : 'bg-white text-gray-400 border-gray-200 hover:bg-gray-100'}`}
+          >
+            <span className={selectedPeriod === '3Months' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>3 Months</span>
+          </button>
+          <button
+            onClick={() => setSelectedPeriod('1Year')}
+            className={`flex-1 px-5 py-2 rounded-full text-sm flex items-center justify-center border transition-colors ${selectedPeriod === '1Year' ? 'border-[#f3e9ff] bg-[#fbf5fc]' : 'bg-white text-gray-400 border-gray-200 hover:bg-gray-100'}`}
+          >
+            <span className={selectedPeriod === '1Year' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>1 Year</span> <img src={CrownImage} alt="Crown" className="w-4 h-4 ml-1" />
+          </button>
+        </div>
+        <div className="flex gap-2">
+          <div className="relative flex-1">
+            <button
+              onClick={() => {
+                setSelectedPeriod('Custom');
+                setIsDatePickerOpen(!isDatePickerOpen);
+              }}
+              className={`w-full px-5 py-2 rounded-full text-sm flex items-center justify-center border transition-colors ${selectedPeriod === 'Custom' ? 'border-[#f3e9ff] bg-[#fbf5fc]' : 'bg-white text-gray-400 border-gray-300 hover:bg-gray-100'}`}
+            >
+              <img src={selectedPeriod === 'Custom' ? GradientCalendarImage : GreyCalendarImage} alt="Calendar" className="w-5 h-5 p-0 mr-2" />
+              <span className={selectedPeriod === 'Custom' ? 'bg-gradient-to-r from-[#DD2A7B] via-[#9747FF] to-[#334CCA] bg-clip-text text-transparent' : 'text-gray-400'}>Custom</span>
+            </button>
+            {isDatePickerOpen && (
+              <div className="absolute top-full mt-2 z-10">
+                <DatePicker
+                  selected={customStartDate}
+                  onChange={handleCustomDateChange}
+                  startDate={customStartDate}
+                  endDate={customEndDate}
+                  selectsRange
+                  inline
+                  onClickOutside={() => setIsDatePickerOpen(false)}
+                />
+              </div>
+            )}
+          </div>
+          <div className="flex-1"></div> {/* Spacer */}
+          <div className="flex-1"></div> {/* Spacer */}
         </div>
       </div>
     </div>

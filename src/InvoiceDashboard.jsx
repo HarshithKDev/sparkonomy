@@ -19,11 +19,9 @@ const InvoiceDashboard = () => {
           <div className="lg:col-span-2 space-y-6">
             <CreateInvoiceCard />
             <p className="text-center text-xs text-[#8134AF]">Or upload an existing invoice and set payment reminder</p>
-            {/* Mobile-only sections */}
-            <div className="lg:hidden">
-              <TimePeriodSelection selectedPeriod={selectedPeriod} setSelectedPeriod={setSelectedPeriod} />
-            </div>
+            {/* Mobile-only sections for correct ordering */}
             <div className="lg:hidden space-y-6">
+              <TimePeriodSelection selectedPeriod={selectedPeriod} setSelectedPeriod={setSelectedPeriod} />
               <FinancialSummary />
             </div>
             <IncomeTrendChart />
