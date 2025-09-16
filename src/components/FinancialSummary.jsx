@@ -7,7 +7,7 @@ const FinancialSummary = () => (
     <div className="bg-white rounded-2xl p-6 shadow-sm flex-1 flex flex-col">
       <h3 className="text-sm font-medium text-gray-400 mb-2">Total Earnings</h3>
       {/* The `mt-auto` class has been removed from here */}
-      <p className="text-3xl font-semibold text-[#8134AF]">$1,25,000</p>
+      <p className="text-3xl font-semibold text-[#8134AF]">$20,400</p>
     </div>
     
     {/* Container for the Bottom Two Cards */}
@@ -15,12 +15,12 @@ const FinancialSummary = () => (
       <div className="bg-white rounded-2xl p-6 shadow-sm flex flex-col">
         <h4 className="text-sm font-medium text-gray-400 mb-1">Payment Awaited</h4>
         {/* And from here... */}
-        <p className="text-xl font-semibold text-[#8134AF]">$25,000</p>
+        <p className="text-xl font-semibold text-[#8134AF]">$6,950</p>
       </div>
       <div className="bg-white rounded-2xl p-6 shadow-sm flex flex-col">
         <h4 className="text-sm font-medium text-gray-400 mb-1">Payment Overdue</h4>
         {/* ...and here. */}
-        <p className="text-xl font-semibold text-[#8134AF]">$25,000</p>
+        <p className="text-xl font-semibold text-[#8134AF]">$1,500</p>
       </div>
     </div>
   </div>

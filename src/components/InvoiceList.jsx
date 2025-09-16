@@ -6,48 +6,48 @@ const InvoiceList = () => {
   const toggleInvoiceExpansion = () => setIsInvoiceExpanded(!isInvoiceExpanded);
 
   const invoices = [
-    { id: 1, client: 'Client Name', amount: '€1,25,000', date: '2024-06-15', status: 'Update Status' },
-    { id: 2, client: 'Client Name', amount: '€1,25,000', date: '2024-06-15', status: 'Unpaid' },
-    { id: 3, client: 'Income Trend', amount: '€1,25,000', date: '2024-06-15', status: 'Disputed' },
-    { id: 4, client: 'Income Trend', amount: '€1,25,000', date: '2024-06-15', status: 'Paid' },
-    { id: 5, client: 'Income Trend', amount: '€1,25,000', date: '2024-06-15', status: 'Paid' },
-    { id: 6, client: 'Income Trend', amount: '€1,25,000', date: '2024-06-15', status: 'Partially Paid' },
-    { id: 7, client: 'Income Trend', amount: '€1,25,000', date: '2024-06-15', status: 'Paid' },
-    { id: 8, client: 'Income Trend', amount: '€1,25,000', date: '2024-06-15', status: 'Overdue' },
-    { id: 9, client: 'Income Trend', amount: '€1,25,000', date: '2024-06-15', status: 'Awaited' },
-    { id: 10, client: 'Income Trend', amount: '€1,25,000', date: '2024-06-15', status: 'Draft' },
-    { id: 11, client: 'Income Trend', amount: '€1,25,000', date: '2024-06-15', status: 'Paid' },
+    { id: 1, client: 'Innovate LLC', amount: '$2,500', date: '2024-06-22', status: 'Update Status' },
+    { id: 2, client: 'Quantum Solutions', amount: '$3,200', date: '2024-06-28', status: 'Unpaid' },
+    { id: 3, client: 'Synergy Corp', amount: '$1,800', date: '2024-06-15', status: 'Disputed' },
+    { id: 4, client: 'Apex Industries', amount: '$5,000', date: '2024-05-30', status: 'Paid' },
+    { id: 5, client: 'Momentum Tech', amount: '$4,100', date: '2024-06-05', status: 'Partially Paid' },
+    { id: 6, client: 'Zenith Group', amount: '$2,200', date: '2024-04-20', status: 'Paid' },
+    { id: 7, client: 'Phoenix Digital', amount: '$1,500', date: '2024-05-10', status: 'Overdue' },
+    { id: 8, client: 'Vortex Inc.', amount: '$3,750', date: '2024-06-25', status: 'Awaited' },
+    { id: 9, client: 'Catalyst Co.', amount: '$850', date: '2024-06-20', status: 'Draft' },
+    { id: 10, client: 'Orion Systems', amount: '$6,200', date: '2024-03-18', status: 'Paid' },
+    { id: 11, client: 'Nova Creative', amount: '$2,900', date: '2024-02-25', status: 'Paid' },
   ];
 
   const getStatusStyle = (status) => {
     const style = {
-      width: '112px', // w-28
+      minWidth: '112px',
       textAlign: 'center',
-      padding: '0.25rem 0.75rem', // px-3 py-1
-      borderRadius: '9999px', // rounded-full
-      fontSize: '0.75rem', // text-xs
-      fontWeight: '500', // font-medium
+      padding: '0.25rem 0.75rem',
+      borderRadius: '9999px',
+      fontSize: '0.75rem',
+      fontWeight: '600',
     };
 
     switch (status) {
       case 'Update Status':
         return { ...style, backgroundColor: '#8134af', color: 'white' };
       case 'Unpaid':
-        return { ...style, backgroundColor: '#f2f2f2', color: 'black' };
+        return { ...style, backgroundColor: '#f2f2f2', color: '#6F6F6F' };
       case 'Disputed':
-        return { ...style, backgroundColor: '#ffb1b1', color: 'black' };
+        return { ...style, backgroundColor: '#ffdde2', color: '#C0392B' };
       case 'Paid':
-        return { ...style, backgroundColor: '#9cefb8', color: 'black' };
+        return { ...style, backgroundColor: '#dcfce7', color: '#1E8449' };
       case 'Partially Paid':
-        return { ...style, backgroundColor: '#fffae5', color: 'black' };
+        return { ...style, backgroundColor: '#fef3c7', color: '#B45309' };
       case 'Overdue':
-        return { ...style, backgroundColor: '#ffb1b1', color: 'black' };
+        return { ...style, backgroundColor: '#ffdde2', color: '#C0392B' };
       case 'Awaited':
-        return { ...style, backgroundColor: '#fffae5', color: 'black' };
+        return { ...style, backgroundColor: '#fef3c7', color: '#B45309' };
       case 'Draft':
-        return { ...style, backgroundColor: '#f2f2f2', color: 'black' };
+        return { ...style, backgroundColor: '#f2f2f2', color: '#6F6F6F' };
       default:
-        return { ...style, backgroundColor: '#f2f2f2', color: 'black' };
+        return { ...style, backgroundColor: '#f2f2f2', color: '#6F6F6F' };
     }
   };
 
@@ -67,11 +67,13 @@ const InvoiceList = () => {
               <div key={invoice.id} className="p-4 lg:p-6 flex items-center justify-between hover:bg-gray-50">
                 <div className="flex-1">
                   <h4 className="font-medium text-gray-900 mb-1">{invoice.client}</h4>
-                  <p className="text-sm text-gray-500">{invoice.amount}, Due: {invoice.date}</p>
+                  <p className="text-sm text-gray-500">{invoice.amount}</p>
+                  <p className="text-sm text-gray-500">Due: {invoice.date}</p>
                 </div>
                 <div className="flex items-center justify-end" style={{ width: '180px' }}>
-                  <span style={getStatusStyle(invoice.status)}>
+                  <span style={getStatusStyle(invoice.status)} className="flex items-center justify-center whitespace-nowrap">
                     {invoice.status}
+                    {invoice.status === 'Update Status' && <ChevronDown className="w-4 h-4 ml-1" />}
                   </span>
                   <div className="w-8 text-right">
                     {(invoice.status === 'Overdue' || invoice.status === 'Awaited') && <Bell className="w-4 h-4 text-gray-400 inline-block" />}

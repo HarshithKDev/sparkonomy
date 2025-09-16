@@ -29,13 +29,14 @@ ChartJS.register(
 );
 
 const IncomeTrendChart = () => {
+  // Calculated data based on your invoices
   const monthData = [
-    { month: 'Jan', income: 3.5, growth: 0 },
-    { month: 'Feb', income: 4.8, growth: 35 },
-    { month: 'Mar', income: 6.8, growth: 40 },
-    { month: 'Apr', income: 3.2, growth: -50 },
-    { month: 'May', income: 5.0, growth: 60 },
-    { month: 'Jun', income: 2.5, growth: -50 },
+    { month: 'Jan', income: 0, growth: 0 },
+    { month: 'Feb', income: 2.9, growth: 0 },
+    { month: 'Mar', income: 6.2, growth: 114 },
+    { month: 'Apr', income: 2.2, growth: -65 },
+    { month: 'May', income: 5.0, growth: 127 },
+    { month: 'Jun', income: 4.1, growth: -18 },
   ];
 
   const data = {
@@ -68,6 +69,10 @@ const IncomeTrendChart = () => {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
+    animation: {
+      duration: 1000, // 1-second animation
+      easing: 'easeInOutQuart', // Smooth easing effect
+    },
     scales: {
       y1: {
         type: 'linear',
@@ -83,10 +88,10 @@ const IncomeTrendChart = () => {
         type: 'linear',
         display: true,
         position: 'right',
-        grid: { drawOnChartArea: true, color: '#f3e9fe', tickColor: '#974847', tickLength: 8 },
+        grid: { drawOnChartArea: false }, 
         border: { color: '#974847' },
         min: -100,
-        max: 100,
+        max: 150,
         ticks: { callback: value => `${value}%`, stepSize: 50, color: '#6B7280', padding: 5 },
       },
       x: {
