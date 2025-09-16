@@ -89,7 +89,10 @@ const IncomeTrendChart = () => {
         type: 'linear',
         display: true,
         position: 'right',
-        grid: { drawOnChartArea: false }, 
+        grid: { 
+          drawOnChartArea: false,
+          tickColor: '#974847', // This is the fix!
+        }, 
         border: { color: '#974847' },
         min: -100,
         max: 100,
