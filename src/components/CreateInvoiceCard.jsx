@@ -1,5 +1,10 @@
 import { Plus } from 'lucide-react';
 
+/**
+ * A card component for creating a new invoice.
+ *
+ * @returns {JSX.Element} The rendered CreateInvoiceCard component.
+ */
 const CreateInvoiceCard = () => (
   <div className="bg-gray-200 rounded-2xl p-6 shadow-sm transition-transform hover:scale-[1.02] cursor-pointer">
     <div className="text-center">

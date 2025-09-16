@@ -14,6 +14,7 @@ import {
   BarController,
 } from 'chart.js';
 
+// Register the necessary components with ChartJS.
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -27,8 +28,13 @@ ChartJS.register(
   BarController
 );
 
+/**
+ * A component that displays a chart of income and growth trends over time.
+ *
+ * @returns {JSX.Element} The rendered IncomeTrendChart component.
+ */
 const IncomeTrendChart = () => {
-  // Calculated data based on your invoices
+  // Data for the last 6 months, including income and month-over-month growth.
   const monthData = [
     { month: 'Jan', income: 1.5, growth: 0 },
     { month: 'Feb', income: 2.9, growth: 93 },
@@ -38,6 +44,7 @@ const IncomeTrendChart = () => {
     { month: 'Jun', income: 4.2, growth: 11 },
   ];
 
+  // Chart data and styling.
   const data = {
     labels: monthData.map(d => d.month),
     datasets: [
@@ -66,6 +73,7 @@ const IncomeTrendChart = () => {
     ],
   };
 
+  // Chart options, including responsiveness, animations, and scales.
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -88,16 +96,16 @@ const IncomeTrendChart = () => {
         type: 'linear',
         display: true,
         position: 'right',
-        grid: { 
+        grid: {
           drawOnChartArea: false,
-          tickColor: '#974847', // This is the fix!
-        }, 
+          tickColor: '#974847',
+        },
         border: { color: '#974847' },
         min: -100,
         max: 100,
-        ticks: { 
-          stepSize: 50, 
-          color: '#6B7280', 
+        ticks: {
+          stepSize: 50,
+          color: '#6B7280',
           padding: 5,
           callback: value => `${value}%`
         },

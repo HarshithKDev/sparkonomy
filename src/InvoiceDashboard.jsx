@@ -7,7 +7,13 @@ import IncomeTrendChart from './components/IncomeTrendChart';
 import InvoiceList from './components/InvoiceList';
 import Footer from './components/Footer';
 
+/**
+ * The main dashboard for managing invoices.
+ *
+ * @returns {JSX.Element} The rendered InvoiceDashboard component.
+ */
 const InvoiceDashboard = () => {
+  // The selected time period for filtering invoices.
   const [selectedPeriod, setSelectedPeriod] = useState('3Months');
 
   return (

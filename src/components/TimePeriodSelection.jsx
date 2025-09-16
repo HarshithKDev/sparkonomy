@@ -1,16 +1,30 @@
 import { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import CrownImage from '../assets/crown.png';
-import GradientCalendarImage from '../assets/gradientcal.png';
-import GreyCalendarImage from '../assets/graycal.png';
+import CrownImage from '../assets/crown.webp';
+import GradientCalendarImage from '../assets/gradientcal.webp';
+import GreyCalendarImage from '../assets/graycal.webp';
 
+/**
+ * A component that allows the user to select a time period for filtering data.
+ *
+ * @param {object} props - The component's properties.
+ * @param {string} props.selectedPeriod - The currently selected time period.
+ * @param {Function} props.setSelectedPeriod - A function to update the selected time period.
+ * @returns {JSX.Element} The rendered TimePeriodSelection component.
+ */
 const TimePeriodSelection = ({ selectedPeriod, setSelectedPeriod }) => {
   const [dateRange, setDateRange] = useState('dd-mm-yyyy - dd-mm-yyyy');
   const [customStartDate, setCustomStartDate] = useState(null);
   const [customEndDate, setCustomEndDate] = useState(null);
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
 
+  /**
+   * Formats a date object into a string with the format 'dd-mm-yyyy'.
+   *
+   * @param {Date} date - The date to format.
+   * @returns {string} The formatted date string.
+   */
   const format = (date) => {
     if (!date) return '';
     const day = String(date.getDate()).padStart(2, '0');
@@ -19,6 +33,7 @@ const TimePeriodSelection = ({ selectedPeriod, setSelectedPeriod }) => {
     return `${day}-${month}-${year}`;
   };
 
+  // Updates the date range display when the selected period or custom dates change.
   useEffect(() => {
     const today = new Date();
     let startDate;
@@ -51,6 +66,11 @@ const TimePeriodSelection = ({ selectedPeriod, setSelectedPeriod }) => {
     setDateRange(`${format(startDate)} - ${format(endDate)}`);
   }, [selectedPeriod, customStartDate, customEndDate]);
 
+  /**
+   * Handles changes to the custom date range.
+   *
+   * @param {Array<Date>} dates - An array containing the start and end dates.
+   */
   const handleCustomDateChange = (dates) => {
     const [start, end] = dates;
     setCustomStartDate(start);
@@ -113,8 +133,9 @@ const TimePeriodSelection = ({ selectedPeriod, setSelectedPeriod }) => {
               </div>
             )}
           </div>
-          <div className="flex-1"></div> {/* Spacer */}
-          <div className="flex-1"></div> {/* Spacer */}
+          {/* Spacers to align the custom button */}
+          <div className="flex-1"></div>
+          <div className="flex-1"></div>
         </div>
       </div>
     </div>

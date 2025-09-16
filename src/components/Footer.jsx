@@ -1,5 +1,10 @@
-import LogoPaw from '../assets/logo.png';
+import LogoPaw from '../assets/logo.webp';
 
+/**
+ * The footer component for the application.
+ *
+ * @returns {JSX.Element} The rendered Footer component.
+ */
 const Footer = () => (
   <div className="mt-8 text-center">
     <p className="text-sm text-gray-400 flex items-center justify-center">

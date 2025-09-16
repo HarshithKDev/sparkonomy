@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import { ChevronDown, Edit, Bell } from 'lucide-react';
 
+/**
+ * A component that displays a list of invoices with their status and actions.
+ *
+ * @returns {JSX.Element} The rendered InvoiceList component.
+ */
 const InvoiceList = () => {
   const [isInvoiceExpanded, setIsInvoiceExpanded] = useState(true);
   const [invoices, setInvoices] = useState([
@@ -19,8 +24,17 @@ const InvoiceList = () => {
   ]);
   const [editingInvoiceId, setEditingInvoiceId] = useState(null);
 
+  /**
+   * Toggles the visibility of the invoice list.
+   */
   const toggleInvoiceExpansion = () => setIsInvoiceExpanded(!isInvoiceExpanded);
 
+  /**
+   * Returns the style for a given invoice status.
+   *
+   * @param {string} status - The status of the invoice.
+   * @returns {object} The style object for the status.
+   */
   const getStatusStyle = (status) => {
     const baseStyle = {
       minWidth: '112px',
@@ -53,6 +67,12 @@ const InvoiceList = () => {
     }
   };
 
+  /**
+   * Returns the text color for a given invoice status.
+   *
+   * @param {string} status - The status of the invoice.
+   * @returns {string} The CSS class for the text color.
+   */
   const getStatusTextColor = (status) => {
     switch (status) {
       case 'Disputed':
@@ -68,19 +88,27 @@ const InvoiceList = () => {
     }
   };
 
+  /**
+   * Updates the status of an invoice.
+   *
+   * @param {number} invoiceId - The ID of the invoice to update.
+   * @param {string} newStatus - The new status of the invoice.
+   */
   const handleStatusChange = (invoiceId, newStatus) => {
-    setInvoices(invoices.map(invoice => 
+    setInvoices(invoices.map(invoice =>
       invoice.id === invoiceId ? { ...invoice, status: newStatus } : invoice
     ));
     setEditingInvoiceId(null);
   };
 
+  // The available status options for an invoice.
   const statusOptions = ['Paid', 'Unpaid', 'Disputed', 'Partially Paid', 'Overdue', 'Awaited', 'Draft'];
 
   return (
     <div className="mt-8">
       <style>
         {`
+          /* Defines a bouncing animation for the arrow icon. */
           @keyframes bounce-arrow {
             0%, 100% {
               transform: translateY(0);
