@@ -37,7 +37,7 @@ const InvoiceList = () => {
    */
   const getStatusStyle = (status) => {
     const baseStyle = {
-      minWidth: '112px',
+      width: '130px', // Set a fixed width for all buttons to ensure uniformity
       textAlign: 'center',
       padding: '0.25rem 0.75rem',
       borderRadius: '9999px',
@@ -147,7 +147,7 @@ const InvoiceList = () => {
                       className="flex items-center justify-center whitespace-nowrap"
                       onClick={() => setEditingInvoiceId(editingInvoiceId === invoice.id ? null : invoice.id)}
                     >
-                      {invoice.status}
+                      <span>{invoice.status}</span>
                       <ChevronDown className="w-4 h-4 ml-1" />
                     </button>
                     {editingInvoiceId === invoice.id && (
