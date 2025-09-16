@@ -61,7 +61,7 @@ const InvoiceList = () => {
           <h3 className="text-lg font-semibold text-gray-400">Your Invoices</h3>
           <ChevronDown className={`w-5 h-5 text-gray-400 transform transition-transform duration-300 ${isInvoiceExpanded ? '' : '-rotate-180'}`} />
         </div>
-        <div className={`overflow-hidden transition-max-height duration-500 ease-in-out ${isInvoiceExpanded ? 'max-h-screen' : 'max-h-0'}`}>
+        <div className={`overflow-hidden transition-[max-height] duration-500 ease-in-out ${isInvoiceExpanded ? 'max-h-[100rem]' : 'max-h-0'}`}>
           <div className="divide-y divide-gray-100">
             {invoices.map((invoice) => (
               <div key={invoice.id} className="p-4 lg:p-6 flex items-center justify-between hover:bg-gray-50">
