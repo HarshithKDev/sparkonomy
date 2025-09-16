@@ -1,4 +1,3 @@
-import React from 'react';
 import LogoPaw from '../assets/logo.png';
 
 const Footer = () => (

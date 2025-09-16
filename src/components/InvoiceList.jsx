@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ChevronDown, Edit, Bell } from 'lucide-react';
 
 const InvoiceList = () => {

@@ -1,8 +1,7 @@
-import React from 'react';
 import { Plus } from 'lucide-react';
 
 const CreateInvoiceCard = () => (
-  <div className="bg-gray-200 rounded-2xl p-6 shadow-sm">
+  <div className="bg-gray-200 rounded-2xl p-6 shadow-sm transition-transform hover:scale-[1.02] cursor-pointer">
     <div className="text-center">
       <div className="w-12 h-12 p-[3px] rounded-full flex items-center justify-center mx-auto mb-4 bg-gradient-to-br from-[#DD2A7B] via-[#9747FF] to-[#334CCA]">
         <div className="w-full h-full bg-gray-200 rounded-full flex items-center justify-center">

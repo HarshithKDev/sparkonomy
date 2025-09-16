@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Header from './components/Header';
 import CreateInvoiceCard from './components/CreateInvoiceCard';
 import TimePeriodSelection from './components/TimePeriodSelection';

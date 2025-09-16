@@ -1,4 +1,3 @@
-import React from 'react';
 import { ChevronLeft } from 'lucide-react';
 import ReactLogo from '../assets/profile.png';
 
@@ -6,7 +5,7 @@ const Header = () => (
   <>
     {/* Mobile Header */}
     <div className="lg:hidden px-4 py-3 flex items-center justify-between" style={{ backgroundColor: '#e7cde6' }}>
-      <div className="flex items-center">
+      <div className="flex items-center p-2 rounded-md transition-transform hover:scale-105 cursor-pointer">
         <ChevronLeft className="w-5 h-5 text-gray-600" />
         <span className="ml-2 text-gray-600 text-sm">Back</span>
       </div>
@@ -19,7 +18,7 @@ const Header = () => (
     {/* Desktop Header */}
     <div className="hidden lg:block px-8 py-4" style={{ backgroundColor: '#e7cde6' }}>
       <div className="mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center">
+        <div className="flex items-center p-2 rounded-md transition-transform hover:scale-105 cursor-pointer">
           <ChevronLeft className="w-5 h-5 text-gray-600 mr-2" />
           <span className="text-gray-600">Back</span>
         </div>
