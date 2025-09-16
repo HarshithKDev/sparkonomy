@@ -54,13 +54,29 @@ const InvoiceList = () => {
 
   return (
     <div className="mt-8">
+      <style>
+        {`
+          @keyframes bounce-arrow {
+            0%, 100% {
+              transform: translateY(0);
+            }
+            50% {
+              transform: translateY(-5px);
+            }
+          }
+
+          .animate-bounce-arrow {
+            animation: bounce-arrow 1s infinite;
+          }
+        `}
+      </style>
       <div className="bg-white rounded-2xl shadow-sm">
         <div
           className="px-4 lg:px-6 pt-6 pb-4 border-b border-gray-100 flex items-center justify-between cursor-pointer"
           onClick={toggleInvoiceExpansion}
         >
           <h3 className="text-lg font-semibold text-gray-400">Your Invoices</h3>
-          <ChevronDown className={`w-5 h-5 text-gray-400 transform transition-transform duration-300 ${isInvoiceExpanded ? '-rotate-180' : ''}`} />
+          <ChevronDown className={`w-5 h-5 text-purple-600 transform transition-transform duration-300 ${isInvoiceExpanded ? '-rotate-180' : 'animate-bounce-arrow'}`} />
         </div>
         <div className={`overflow-hidden transition-[max-height] duration-500 ease-in-out ${isInvoiceExpanded ? 'max-h-[100rem]' : 'max-h-0'}`}>
           <div className="divide-y divide-gray-100">
